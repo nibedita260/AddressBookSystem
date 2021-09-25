@@ -6,8 +6,13 @@ namespace AddressBook
     {
         static void Main(string[] args)
         {
-            AddressBook addressBook = new AddressBook();
-            addressBook.CreateContacts();
+            bool isExit = false;
+            while (!isExit)
+            {
+                AddressBook addressBook = new AddressBook();
+                addressBook.CreateContacts();
+                addressBook.EditContacts("NIBI");
+            }
         }
     }
 }

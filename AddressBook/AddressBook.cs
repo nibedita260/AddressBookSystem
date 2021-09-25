@@ -8,6 +8,7 @@ namespace AddressBook
     class AddressBook
     {
         readonly List<Contacts> GetContacts = new List<Contacts>();
+        Dictionary<string, List<Contacts>> dict = new Dictionary<string, List<Contacts>>();
         public void CreateContacts()
         {
             Contacts contacts = new Contacts();
@@ -49,6 +50,10 @@ namespace AddressBook
             contacts2.Email = Console.ReadLine().ToUpper();
             GetContacts.Add(contacts2);
             Console.WriteLine("contacts2 details added successfully");
+
+            //maintain dictionary of addressbook name to addressbook
+            dict.Add("Nibedita", GetContacts);
+            dict.Add("Abhinav", GetContacts);
         }
     }
 }

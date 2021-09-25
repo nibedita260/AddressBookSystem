@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace AddressBook
@@ -70,6 +71,32 @@ namespace AddressBook
                 }
             }
         }
-        
+        public void DeleteContacts(string name)
+        {
+            foreach (var data in GetContacts.ToList())
+            {
+                if (GetContacts.Contains(data) == true)
+                {
+                    Console.WriteLine("The Contact Details are\n:" + data.Firstname + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.Zip + " " + data.PhoneNumber + " " + data.Email);
+                    if (data.Firstname == name)
+                    {
+                        try
+                        {
+                            Console.WriteLine("given name contact exists");
+                            GetContacts.Remove(data);
+                            Console.WriteLine("contact deleted successfully");
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("given name contact does not exists");
+                    }
+                }
+            }
+        }
     }
 }

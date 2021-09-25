@@ -11,8 +11,6 @@ namespace AddressBook
             {
                 AddressBook addressBook = new AddressBook();
                 addressBook.CreateContacts();
-                //addressBook.EditContacts("NIBI");
-                addressBook.DeleteContacts("NIBI");
             }
         }
     }

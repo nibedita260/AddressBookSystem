@@ -8,34 +8,27 @@ namespace AddressBook
     class AddressBook
     {
         readonly List<Contacts> GetContacts = new List<Contacts>();
-        Dictionary<string, List<Contacts>> dict = new Dictionary<string, List<Contacts>>();
         public void CreateContacts()
         {
             Contacts contacts = new Contacts();
             Console.WriteLine("Enter Firstname");
-            contacts.Firstname = Console.ReadLine().ToLower();
+            contacts.Firstname = Console.ReadLine().ToUpper();
             Console.WriteLine("Enter Lastname");
-            contacts.LastName = Console.ReadLine().ToLower();
+            contacts.LastName = Console.ReadLine().ToUpper();
             Console.WriteLine("Enter Address");
-            contacts.Address = Console.ReadLine().ToLower();
+            contacts.Address = Console.ReadLine().ToUpper();
             Console.WriteLine("Enter City");
-            contacts.City = Console.ReadLine().ToLower();
+            contacts.City = Console.ReadLine().ToUpper();
             Console.WriteLine("Enter State");
-            contacts.State = Console.ReadLine().ToLower();
+            contacts.State = Console.ReadLine().ToUpper();
             Console.WriteLine("Enter Zipcode");
             contacts.Zip = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Enter Phonenumber");
             contacts.PhoneNumber = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Enter Email");
-            contacts.Email = Console.ReadLine().ToLower();
+            contacts.Email = Console.ReadLine().ToUpper();
             GetContacts.Add(contacts);
             Console.WriteLine("contacts details added successfully");
-<<<<<<< HEAD
-            //maintain dictionary of addressbook name to addressbook
-            dict.Add("Nibedita", GetContacts);
-            dict.Add("Abhinav", GetContacts);
-=======
->>>>>>> UC5-AddMultContacts
         }
         public void DisplayContacts()
         {
@@ -61,17 +54,8 @@ namespace AddressBook
                         int options = Convert.ToInt32(Console.ReadLine());
                         switch (options)
                         {
-<<<<<<< HEAD
-<<<<<<< HEAD
-                            case 1:string lastname = Console.ReadLine();
-=======
                             case 1:
                                 string lastname = Console.ReadLine();
->>>>>>> UC3-EditContacts
-=======
-                            case 1:
-                                string lastname = Console.ReadLine();
->>>>>>> UC5-AddMultContacts
                                 break;
                             case 2:
                                 string address = Console.ReadLine();
@@ -81,26 +65,12 @@ namespace AddressBook
                                 string city = Console.ReadLine();
                                 data.City = city;
                                 break;
-<<<<<<< HEAD
-<<<<<<< HEAD
-                            case 4:string state = Console.ReadLine();
-                                data.State = state;
-                                break;
-                            case 5:
-                                int zip =Convert.ToInt32(Console.ReadLine());
-=======
-=======
->>>>>>> UC5-AddMultContacts
                             case 4:
                                 string state = Console.ReadLine();
                                 data.State = state;
                                 break;
                             case 5:
                                 int zip = Convert.ToInt32(Console.ReadLine());
-<<<<<<< HEAD
->>>>>>> UC3-EditContacts
-=======
->>>>>>> UC5-AddMultContacts
                                 data.Zip = zip;
                                 break;
                             case 6:
@@ -123,10 +93,6 @@ namespace AddressBook
                 }
             }
             DisplayContacts();
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> UC5-AddMultContacts
         }
         public void DeleteContacts()
         {
@@ -157,19 +123,14 @@ namespace AddressBook
                 }
             }
             DisplayContacts();
-<<<<<<< HEAD
-=======
->>>>>>> UC3-EditContacts
-=======
         }
         public void AddMultipleContacts(int n)
         {
-            while (n >0)
+            while (n > 0)
             {
                 CreateContacts();
                 n--;
             }
->>>>>>> UC5-AddMultContacts
         }
     }
 }

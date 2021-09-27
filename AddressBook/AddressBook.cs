@@ -29,33 +29,10 @@ namespace AddressBook
             Console.WriteLine("Enter Email");
             contacts.Email = Console.ReadLine().ToLower();
             GetContacts.Add(contacts);
-<<<<<<< HEAD
             Console.WriteLine("contacts details added successfully");
-            //creating multiple contacts
-            Contacts contacts2 = new Contacts();
-            Console.WriteLine("Enter Firstname");
-            contacts2.Firstname = Console.ReadLine().ToUpper();
-            Console.WriteLine("Enter Lastname");
-            contacts2.LastName = Console.ReadLine().ToUpper();
-            Console.WriteLine("Enter Address");
-            contacts2.Address = Console.ReadLine().ToUpper();
-            Console.WriteLine("Enter City");
-            contacts2.City = Console.ReadLine().ToUpper();
-            Console.WriteLine("Enter State");
-            contacts2.State = Console.ReadLine().ToUpper();
-            Console.WriteLine("Enter Zipcode");
-            contacts2.Zip = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter Phonenumber");
-            contacts2.PhoneNumber = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter Email");
-            contacts2.Email = Console.ReadLine().ToUpper();
-            GetContacts.Add(contacts2);
-            Console.WriteLine("contacts2 details added successfully");
-
             //maintain dictionary of addressbook name to addressbook
             dict.Add("Nibedita", GetContacts);
             dict.Add("Abhinav", GetContacts);
-=======
         }
         public void DisplayContacts()
         {
@@ -148,7 +125,6 @@ namespace AddressBook
                 }
             }
             DisplayContacts();
->>>>>>> UC4-DeleteContacts
         }
     }
 }

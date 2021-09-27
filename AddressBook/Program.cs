@@ -10,10 +10,8 @@ namespace AddressBook
             int options;
             while (!isExit)
             {
-<<<<<<< HEAD
                 AddressBook addressBook = new AddressBook();
                 addressBook.CreateContacts();
-=======
                 Console.WriteLine("Choose 1.CreateContacts 2.DisplayContacts 3.EditContacts 4.DeleteContacts");
                 options = Convert.ToInt32(Console.ReadLine());
                 AddressBook addressBook1 = new AddressBook();
@@ -31,7 +29,6 @@ namespace AddressBook
                         Console.WriteLine("Choose valid option");
                         break;
                 }
->>>>>>> UC4-DeleteContacts
             }
         }
     }

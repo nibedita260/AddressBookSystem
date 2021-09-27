@@ -30,9 +30,12 @@ namespace AddressBook
             contacts.Email = Console.ReadLine().ToLower();
             GetContacts.Add(contacts);
             Console.WriteLine("contacts details added successfully");
+<<<<<<< HEAD
             //maintain dictionary of addressbook name to addressbook
             dict.Add("Nibedita", GetContacts);
             dict.Add("Abhinav", GetContacts);
+=======
+>>>>>>> UC5-AddMultContacts
         }
         public void DisplayContacts()
         {
@@ -59,11 +62,16 @@ namespace AddressBook
                         switch (options)
                         {
 <<<<<<< HEAD
+<<<<<<< HEAD
                             case 1:string lastname = Console.ReadLine();
 =======
                             case 1:
                                 string lastname = Console.ReadLine();
 >>>>>>> UC3-EditContacts
+=======
+                            case 1:
+                                string lastname = Console.ReadLine();
+>>>>>>> UC5-AddMultContacts
                                 break;
                             case 2:
                                 string address = Console.ReadLine();
@@ -74,19 +82,25 @@ namespace AddressBook
                                 data.City = city;
                                 break;
 <<<<<<< HEAD
+<<<<<<< HEAD
                             case 4:string state = Console.ReadLine();
                                 data.State = state;
                                 break;
                             case 5:
                                 int zip =Convert.ToInt32(Console.ReadLine());
 =======
+=======
+>>>>>>> UC5-AddMultContacts
                             case 4:
                                 string state = Console.ReadLine();
                                 data.State = state;
                                 break;
                             case 5:
                                 int zip = Convert.ToInt32(Console.ReadLine());
+<<<<<<< HEAD
 >>>>>>> UC3-EditContacts
+=======
+>>>>>>> UC5-AddMultContacts
                                 data.Zip = zip;
                                 break;
                             case 6:
@@ -110,6 +124,9 @@ namespace AddressBook
             }
             DisplayContacts();
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> UC5-AddMultContacts
         }
         public void DeleteContacts()
         {
@@ -140,8 +157,19 @@ namespace AddressBook
                 }
             }
             DisplayContacts();
+<<<<<<< HEAD
 =======
 >>>>>>> UC3-EditContacts
+=======
+        }
+        public void AddMultipleContacts(int n)
+        {
+            while (n >0)
+            {
+                CreateContacts();
+                n--;
+            }
+>>>>>>> UC5-AddMultContacts
         }
     }
 }

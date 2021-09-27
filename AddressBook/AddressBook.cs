@@ -58,7 +58,12 @@ namespace AddressBook
                         int options = Convert.ToInt32(Console.ReadLine());
                         switch (options)
                         {
+<<<<<<< HEAD
                             case 1:string lastname = Console.ReadLine();
+=======
+                            case 1:
+                                string lastname = Console.ReadLine();
+>>>>>>> UC3-EditContacts
                                 break;
                             case 2:
                                 string address = Console.ReadLine();
@@ -68,11 +73,20 @@ namespace AddressBook
                                 string city = Console.ReadLine();
                                 data.City = city;
                                 break;
+<<<<<<< HEAD
                             case 4:string state = Console.ReadLine();
                                 data.State = state;
                                 break;
                             case 5:
                                 int zip =Convert.ToInt32(Console.ReadLine());
+=======
+                            case 4:
+                                string state = Console.ReadLine();
+                                data.State = state;
+                                break;
+                            case 5:
+                                int zip = Convert.ToInt32(Console.ReadLine());
+>>>>>>> UC3-EditContacts
                                 data.Zip = zip;
                                 break;
                             case 6:
@@ -95,6 +109,7 @@ namespace AddressBook
                 }
             }
             DisplayContacts();
+<<<<<<< HEAD
         }
         public void DeleteContacts()
         {
@@ -125,6 +140,8 @@ namespace AddressBook
                 }
             }
             DisplayContacts();
+=======
+>>>>>>> UC3-EditContacts
         }
     }
 }

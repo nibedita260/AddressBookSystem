@@ -30,12 +30,47 @@ namespace AddressBook
             GetContacts.Add(contacts);
             Console.WriteLine("contacts details added successfully");
         }
+<<<<<<< HEAD
         public void DisplayContacts()
         {
             CreateContacts();
             foreach (var data in GetContacts)
             {
                 Console.WriteLine("The Contact Details are\n:" + data.Firstname + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.Zip + " " + data.PhoneNumber + " " + data.Email);
+=======
+        public void Print(Contacts contacts)
+        {
+            Console.WriteLine("Enter Firstname");
+            contacts.Firstname = Console.ReadLine().ToUpper();
+            Console.WriteLine("Enter Lastname");
+            contacts.LastName = Console.ReadLine().ToUpper();
+            Console.WriteLine("Enter Address");
+            contacts.Address = Console.ReadLine().ToUpper();
+            Console.WriteLine("Enter City");
+            contacts.City = Console.ReadLine().ToUpper();
+            Console.WriteLine("Enter State");
+            contacts.State = Console.ReadLine().ToUpper();
+            Console.WriteLine("Enter Zipcode");
+            contacts.Zip = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter Phonenumber");
+            contacts.PhoneNumber = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter Email");
+            contacts.Email = Console.ReadLine().ToUpper();
+        }
+        public void DisplayContacts()
+        {
+            foreach (var data in GetContacts)
+            {
+                if (GetContacts.Contains(data))
+                {
+                    Print(data);
+                    Console.WriteLine("The Contact Details are\n:" + data.Firstname + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.Zip + " " + data.PhoneNumber + " " + data.Email);
+                }
+                else
+                {
+                    Console.WriteLine("contact does not exists");
+                }
+>>>>>>> UC6-UniqueContacts
             }
         }
         public void EditContacts()
@@ -128,9 +163,35 @@ namespace AddressBook
         {
             while (n > 0)
             {
+<<<<<<< HEAD
                 CreateContacts();
                 n--;
             }
+=======
+                Console.WriteLine("enter name to store the above contact details in a dictionary");
+                string name = Console.ReadLine().ToLower();
+                CreateContacts();
+                dict.Add(name, GetContacts);
+                n--;
+            }
+        }
+        public void DisplayMultContacts()
+        {
+            //maintain dictionary of addressbook name to addressbook
+            Console.WriteLine("enter name of dictionary to display that contact details");
+            string name = Console.ReadLine().ToLower();
+            foreach (var contacts in dict)
+            {
+                if (dict.ContainsKey(name))
+                {
+                    Console.WriteLine("contact details of " +contacts);
+                }
+                else
+                {
+                    Console.WriteLine("contact details of " + dict.Keys + "are found");
+                }
+            }
+>>>>>>> UC6-UniqueContacts
         }
     }
 }

@@ -13,8 +13,6 @@ namespace AddressBook
             {
                 Console.WriteLine("Choose 1.CreateContacts 2.DisplayContacts 3.EditContacts 4.DeleteContacts 5.AddMultipleContacts");
                 options = Convert.ToInt32(Console.ReadLine());
-               
-                List<Contacts> GetContacts = new List<Contacts>(); // creating list
                 AddressBook addressBook1 = new AddressBook();
                 switch (options)
                 {

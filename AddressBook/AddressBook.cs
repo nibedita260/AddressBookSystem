@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace AddressBook
@@ -11,57 +12,78 @@ namespace AddressBook
         {
             Contacts contacts = new Contacts();
             Console.WriteLine("Enter Firstname");
-            contacts.Firstname = Console.ReadLine().ToUpper();
+            contacts.Firstname = Console.ReadLine().ToLower();
             Console.WriteLine("Enter Lastname");
-            contacts.LastName = Console.ReadLine().ToUpper();
+            contacts.LastName = Console.ReadLine().ToLower();
             Console.WriteLine("Enter Address");
-            contacts.Address = Console.ReadLine().ToUpper();
+            contacts.Address = Console.ReadLine().ToLower();
             Console.WriteLine("Enter City");
-            contacts.City = Console.ReadLine().ToUpper();
+            contacts.City = Console.ReadLine().ToLower();
             Console.WriteLine("Enter State");
-            contacts.State = Console.ReadLine().ToUpper();
+            contacts.State = Console.ReadLine().ToLower();
             Console.WriteLine("Enter Zipcode");
             contacts.Zip = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Enter Phonenumber");
             contacts.PhoneNumber = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Enter Email");
-            contacts.Email = Console.ReadLine().ToUpper();
+            contacts.Email = Console.ReadLine().ToLower();
             GetContacts.Add(contacts);
         }
-        public void EditContacts(string name)
+        public void DisplayContacts()
         {
-            Console.WriteLine("your entered name is:" + name);
+            CreateContacts();
             foreach (var data in GetContacts)
             {
-                if (GetContacts.Contains(data) == true)
+                Console.WriteLine("The Contact Details are\n:" + data.Firstname + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.Zip + " " + data.PhoneNumber + " " + data.Email);
+            }
+        }
+        public void EditContacts()
+        {
+            CreateContacts();
+            Console.WriteLine("to edit contact list enter contact firstname");
+            string name = Console.ReadLine().ToLower();
+            foreach (var data in GetContacts)
+            {
+                if (GetContacts.Contains(data))
                 {
-                    Console.WriteLine("The Contact Details are\n:" + data.Firstname + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.Zip + " " + data.PhoneNumber + " " + data.Email);
                     if (data.Firstname == name)
                     {
                         Console.WriteLine("name exists");
-                        Console.WriteLine("To edit choose 1.Address 2.City 3.PhoneNumber");
+                        Console.WriteLine("To edit contacts enter 1.LastName 2.Address 3.City 4.State 5.Zip 6.PhoneNumber 7.Email");
                         int options = Convert.ToInt32(Console.ReadLine());
                         switch (options)
                         {
-                            case 1:Console.WriteLine("enter address");
+                            case 1:
+                                string lastname = Console.ReadLine();
+                                break;
+                            case 2:
                                 string address = Console.ReadLine();
                                 data.Address = address;
                                 break;
-                            case 2:
-                                Console.WriteLine("enter city");
+                            case 3:
                                 string city = Console.ReadLine();
                                 data.City = city;
                                 break;
-                            case 3:
-                                Console.WriteLine("enter phone number");
-                                int phno =Convert.ToInt32(Console.ReadLine());
+                            case 4:
+                                string state = Console.ReadLine();
+                                data.State = state;
+                                break;
+                            case 5:
+                                int zip = Convert.ToInt32(Console.ReadLine());
+                                data.Zip = zip;
+                                break;
+                            case 6:
+                                int phno = Convert.ToInt32(Console.ReadLine());
                                 data.PhoneNumber = phno;
+                                break;
+                            case 7:
+                                string email = Console.ReadLine();
+                                data.Email = email;
                                 break;
                             default:
                                 Console.WriteLine("choose valid option");
                                 break;
                         }
-                        Console.WriteLine("The Contact Details are\n:" + data.Firstname + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.Zip + " " + data.PhoneNumber + " " + data.Email);
                     }
                     else
                     {
@@ -69,7 +91,7 @@ namespace AddressBook
                     }
                 }
             }
+            DisplayContacts();
         }
-        
     }
 }

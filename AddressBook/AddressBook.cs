@@ -26,6 +26,5 @@ namespace AddressBook
             Console.WriteLine("Enter Email");
             contacts.Email = Console.ReadLine();
         }
-        
     }
 }

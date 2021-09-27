@@ -28,6 +28,14 @@ namespace AddressBook
             contacts.Email = Console.ReadLine();
             GetContacts.Add(contacts);
         }
-        
+        public void DisplayContacts()
+        {
+            CreateContacts();
+            foreach (var data in GetContacts)
+            {
+                if(GetContacts.Contains(data))
+                Console.WriteLine("The Contact Details are\n:" + data.Firstname + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.Zip + " " + data.PhoneNumber + " " + data.Email);
+            }
+        }
     }
 }

@@ -9,6 +9,7 @@ namespace AddressBook
         {
             bool isExit = false;
             int options;
+            AddressBook addressBook1 = new AddressBook();
             while (!isExit)
             {
 <<<<<<< HEAD
@@ -19,8 +20,11 @@ namespace AddressBook
 =======
                 Console.WriteLine("Choose 1.CreateContacts 2.DisplayContacts 3.EditContacts 4.DeleteContacts 5.AddMultipleContacts 6.UniqueContacts");
                 options = Convert.ToInt32(Console.ReadLine());
+<<<<<<< HEAD
 >>>>>>> UC6-UniqueContacts
                 AddressBook addressBook1 = new AddressBook();
+=======
+>>>>>>> UC6-UniqueContacts
                 switch (options)
                 {
                     case 1:

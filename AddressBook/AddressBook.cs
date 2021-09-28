@@ -7,12 +7,8 @@ namespace AddressBook
 {
     class AddressBook
     {
-<<<<<<< HEAD
-        readonly List<Contacts> GetContacts = new List<Contacts>();
-=======
         public List<Contacts> GetContacts = new List<Contacts>();
         Dictionary<string, List<Contacts>> dict = new Dictionary<string, List<Contacts>>();
->>>>>>> UC6-UniqueContacts
         public void CreateContacts()
         {
             Contacts contacts = new Contacts();
@@ -35,36 +31,6 @@ namespace AddressBook
             GetContacts.Add(contacts);
             Console.WriteLine("contacts details added successfully");
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-        public void DisplayContacts()
-        {
-            CreateContacts();
-            foreach (var data in GetContacts)
-            {
-                Console.WriteLine("The Contact Details are\n:" + data.Firstname + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.Zip + " " + data.PhoneNumber + " " + data.Email);
-=======
-        public void Print(Contacts contacts)
-        {
-            Console.WriteLine("Enter Firstname");
-            contacts.Firstname = Console.ReadLine().ToUpper();
-            Console.WriteLine("Enter Lastname");
-            contacts.LastName = Console.ReadLine().ToUpper();
-            Console.WriteLine("Enter Address");
-            contacts.Address = Console.ReadLine().ToUpper();
-            Console.WriteLine("Enter City");
-            contacts.City = Console.ReadLine().ToUpper();
-            Console.WriteLine("Enter State");
-            contacts.State = Console.ReadLine().ToUpper();
-            Console.WriteLine("Enter Zipcode");
-            contacts.Zip = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter Phonenumber");
-            contacts.PhoneNumber = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter Email");
-            contacts.Email = Console.ReadLine().ToUpper();
-        }
-=======
->>>>>>> UC6-UniqueContacts
         public void DisplayContacts()
         {
             foreach (var data in GetContacts)
@@ -77,7 +43,6 @@ namespace AddressBook
                 {
                     Console.WriteLine("contact does not exists");
                 }
->>>>>>> UC6-UniqueContacts
             }
         }
         public void EditContacts()
@@ -166,17 +131,6 @@ namespace AddressBook
         {
             while (n > 0)
             {
-<<<<<<< HEAD
-<<<<<<< HEAD
-                CreateContacts();
-                n--;
-            }
-=======
-                Console.WriteLine("enter name to store the above contact details in a dictionary");
-                string name = Console.ReadLine().ToLower();
-                CreateContacts();
-                dict.Add(name, GetContacts);
-=======
                 foreach (var data in GetContacts)
                 {
                     Console.WriteLine("enter firstname of your contactdetails");
@@ -199,7 +153,6 @@ namespace AddressBook
                         Console.WriteLine("Oops contactlist does not exist!! Please create a contactList");
                     }
                 }
->>>>>>> UC6-UniqueContacts
                 n--;
             }
         }
@@ -212,13 +165,12 @@ namespace AddressBook
             {
                 if (contacts.Key.Contains(name))
                 {
-                    foreach(var data in contacts.Value)
+                    foreach (var data in contacts.Value)
                     {
                         Console.WriteLine("The Contact Details are\n:" + data.Firstname + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.Zip + " " + data.PhoneNumber + " " + data.Email);
                     }
                 }
             }
->>>>>>> UC6-UniqueContacts
         }
     }
 }

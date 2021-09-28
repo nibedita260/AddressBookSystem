@@ -12,15 +12,15 @@ namespace AddressBook
         {
             Contacts contacts = new Contacts();
             Console.WriteLine("Enter Firstname");
-            contacts.Firstname = Console.ReadLine().ToUpper();
+            contacts.Firstname = Console.ReadLine().ToLower();
             Console.WriteLine("Enter Lastname");
-            contacts.LastName = Console.ReadLine().ToUpper();
+            contacts.LastName = Console.ReadLine().ToLower();
             Console.WriteLine("Enter Address");
-            contacts.Address = Console.ReadLine().ToUpper();
+            contacts.Address = Console.ReadLine().ToLower();
             Console.WriteLine("Enter City");
-            contacts.City = Console.ReadLine().ToUpper();
+            contacts.City = Console.ReadLine().ToLower();
             Console.WriteLine("Enter State");
-            contacts.State = Console.ReadLine().ToUpper();
+            contacts.State = Console.ReadLine().ToLower();
             Console.WriteLine("Enter Zipcode");
             contacts.Zip = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Enter Phonenumber");
@@ -32,7 +32,6 @@ namespace AddressBook
         }
         public void DisplayContacts()
         {
-            //CreateContacts();
             foreach (var data in getContacts)
             {
                 Console.WriteLine("The Contact Details are\n:" + data.Firstname + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.Zip + " " + data.PhoneNumber + " " + data.Email);
@@ -40,7 +39,6 @@ namespace AddressBook
         }
         public void EditContacts()
         {
-            //CreateContacts();
             Console.WriteLine("to edit contact list enter contact firstname");
             string name = Console.ReadLine().ToLower();
             foreach (var data in getContacts)
@@ -93,11 +91,9 @@ namespace AddressBook
                     }
                 }
             }
-            DisplayContacts();
         }
         public void DeleteContacts()
         {
-            CreateContacts();
             Console.WriteLine("to delete contact list enter contact firstname ");
             string name = Console.ReadLine().ToLower();
             foreach (var data in getContacts)
@@ -123,7 +119,6 @@ namespace AddressBook
                     }
                 }
             }
-            DisplayContacts();
         }
         public void AddMultipleContacts(int n)
         {

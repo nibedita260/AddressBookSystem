@@ -6,7 +6,7 @@ namespace AddressBook
 {
     class AddressBook
     {
-        List<Contacts> GetContacts = new List<Contacts>();
+        public List<Contacts> GetContacts = new List<Contacts>();
         public void CreateContacts()
         {
             Contacts contacts = new Contacts();
@@ -30,7 +30,6 @@ namespace AddressBook
         }
         public void DisplayContacts()
         {
-            CreateContacts();
             foreach (var data in GetContacts)
             {
                 if(GetContacts.Contains(data))

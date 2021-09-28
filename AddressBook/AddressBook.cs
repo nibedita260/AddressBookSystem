@@ -7,48 +7,29 @@ namespace AddressBook
 {
     class AddressBook
     {
-        readonly List<Contacts> GetContacts = new List<Contacts>();
+        public List<Contacts> GetContacts = new List<Contacts>();
         Dictionary<string, List<Contacts>> dict = new Dictionary<string, List<Contacts>>();
         public void CreateContacts()
         {
             Contacts contacts = new Contacts();
             Console.WriteLine("Enter Firstname");
-            contacts.Firstname = Console.ReadLine().ToUpper();
+            contacts.Firstname = Console.ReadLine().ToLower();
             Console.WriteLine("Enter Lastname");
-            contacts.LastName = Console.ReadLine().ToUpper();
+            contacts.LastName = Console.ReadLine().ToLower();
             Console.WriteLine("Enter Address");
-            contacts.Address = Console.ReadLine().ToUpper();
+            contacts.Address = Console.ReadLine().ToLower();
             Console.WriteLine("Enter City");
-            contacts.City = Console.ReadLine().ToUpper();
+            contacts.City = Console.ReadLine().ToLower();
             Console.WriteLine("Enter State");
-            contacts.State = Console.ReadLine().ToUpper();
+            contacts.State = Console.ReadLine().ToLower();
             Console.WriteLine("Enter Zipcode");
             contacts.Zip = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Enter Phonenumber");
             contacts.PhoneNumber = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Enter Email");
-            contacts.Email = Console.ReadLine().ToUpper();
+            contacts.Email = Console.ReadLine().ToLower();
             GetContacts.Add(contacts);
             Console.WriteLine("contacts details added successfully");
-        }
-        public void Print(Contacts contacts)
-        {
-            Console.WriteLine("Enter Firstname");
-            contacts.Firstname = Console.ReadLine().ToUpper();
-            Console.WriteLine("Enter Lastname");
-            contacts.LastName = Console.ReadLine().ToUpper();
-            Console.WriteLine("Enter Address");
-            contacts.Address = Console.ReadLine().ToUpper();
-            Console.WriteLine("Enter City");
-            contacts.City = Console.ReadLine().ToUpper();
-            Console.WriteLine("Enter State");
-            contacts.State = Console.ReadLine().ToUpper();
-            Console.WriteLine("Enter Zipcode");
-            contacts.Zip = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter Phonenumber");
-            contacts.PhoneNumber = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter Email");
-            contacts.Email = Console.ReadLine().ToUpper();
         }
         public void DisplayContacts()
         {
@@ -56,7 +37,6 @@ namespace AddressBook
             {
                 if (GetContacts.Contains(data))
                 {
-                    Print(data);
                     Console.WriteLine("The Contact Details are\n:" + data.Firstname + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.Zip + " " + data.PhoneNumber + " " + data.Email);
                 }
                 else
@@ -67,7 +47,6 @@ namespace AddressBook
         }
         public void EditContacts()
         {
-            CreateContacts();
             Console.WriteLine("to edit contact list enter contact firstname");
             string name = Console.ReadLine().ToLower();
             foreach (var data in GetContacts)
@@ -119,14 +98,12 @@ namespace AddressBook
                     }
                 }
             }
-            DisplayContacts();
         }
         public void DeleteContacts()
         {
-            CreateContacts();
             Console.WriteLine("to delete contact list enter contact firstname ");
             string name = Console.ReadLine().ToLower();
-            foreach (var data in GetContacts)
+            foreach (var data in GetContacts.ToList())
             {
                 if (GetContacts.Contains(data))
                 {
@@ -149,16 +126,33 @@ namespace AddressBook
                     }
                 }
             }
-            DisplayContacts();
         }
         public void AddMultipleContacts(int n)
         {
             while (n > 0)
             {
-                Console.WriteLine("enter name to store the above contact details in a dictionary");
-                string name = Console.ReadLine().ToLower();
-                CreateContacts();
-                dict.Add(name, GetContacts);
+                foreach (var data in GetContacts)
+                {
+                    Console.WriteLine("enter firstname of your contactdetails");
+                    string name = Console.ReadLine().ToLower();
+                    if (GetContacts.Contains(data))
+                    {
+                        if (data.Firstname == name)
+                        {
+                            Console.WriteLine("enter unique name to store the above contact details in a dictionary");
+                            string uniqueName = Console.ReadLine().ToLower();
+                            dict.Add(uniqueName, GetContacts);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Oops!! Please enter correct firstname of your contactList");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Oops contactlist does not exist!! Please create a contactList");
+                    }
+                }
                 n--;
             }
         }
@@ -169,13 +163,12 @@ namespace AddressBook
             string name = Console.ReadLine().ToLower();
             foreach (var contacts in dict)
             {
-                if (dict.ContainsKey(name))
+                if (contacts.Key.Contains(name))
                 {
-                    Console.WriteLine("contact details of " +contacts);
-                }
-                else
-                {
-                    Console.WriteLine("contact details of " + dict.Keys + "are found");
+                    foreach(var data in contacts.Value)
+                    {
+                        Console.WriteLine("The Contact Details are\n:" + data.Firstname + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.Zip + " " + data.PhoneNumber + " " + data.Email);
+                    }
                 }
             }
         }

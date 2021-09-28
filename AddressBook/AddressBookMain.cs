@@ -5,9 +5,9 @@ using System.Text;
 
 namespace AddressBook
 {
-    class AddressBook
+    class AddressBookMain
     {
-        readonly List<Contacts> GetContacts = new List<Contacts>();
+        public List<Contacts> getContacts = new List<Contacts>();
         public void CreateContacts()
         {
             Contacts contacts = new Contacts();
@@ -27,25 +27,25 @@ namespace AddressBook
             contacts.PhoneNumber = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Enter Email");
             contacts.Email = Console.ReadLine().ToUpper();
-            GetContacts.Add(contacts);
+            getContacts.Add(contacts);
             Console.WriteLine("contacts details added successfully");
         }
         public void DisplayContacts()
         {
-            CreateContacts();
-            foreach (var data in GetContacts)
+            //CreateContacts();
+            foreach (var data in getContacts)
             {
                 Console.WriteLine("The Contact Details are\n:" + data.Firstname + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.Zip + " " + data.PhoneNumber + " " + data.Email);
             }
         }
         public void EditContacts()
         {
-            CreateContacts();
+            //CreateContacts();
             Console.WriteLine("to edit contact list enter contact firstname");
             string name = Console.ReadLine().ToLower();
-            foreach (var data in GetContacts)
+            foreach (var data in getContacts)
             {
-                if (GetContacts.Contains(data))
+                if (getContacts.Contains(data))
                 {
                     if (data.Firstname == name)
                     {
@@ -56,6 +56,7 @@ namespace AddressBook
                         {
                             case 1:
                                 string lastname = Console.ReadLine();
+                                data.LastName = lastname;
                                 break;
                             case 2:
                                 string address = Console.ReadLine();
@@ -99,16 +100,16 @@ namespace AddressBook
             CreateContacts();
             Console.WriteLine("to delete contact list enter contact firstname ");
             string name = Console.ReadLine().ToLower();
-            foreach (var data in GetContacts)
+            foreach (var data in getContacts)
             {
-                if (GetContacts.Contains(data))
+                if (getContacts.Contains(data))
                 {
                     if (data.Firstname == name)
                     {
                         try
                         {
                             Console.WriteLine("given name contact exists");
-                            GetContacts.Remove(data);
+                            getContacts.Remove(data);
                             Console.WriteLine("contact deleted successfully");
                         }
                         catch (Exception e)

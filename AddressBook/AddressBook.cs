@@ -7,7 +7,7 @@ namespace AddressBook
 {
     class AddressBook
     {
-        List<Contacts> GetContacts = new List<Contacts>();
+        public List<Contacts> GetContacts = new List<Contacts>();
         public void CreateContacts()
         {
             Contacts contacts = new Contacts();
@@ -31,7 +31,6 @@ namespace AddressBook
         }
         public void DisplayContacts()
         {
-            CreateContacts();
             foreach (var data in GetContacts)
             {
                 Console.WriteLine("The Contact Details are\n:" + data.Firstname + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.Zip + " " + data.PhoneNumber + " " + data.Email);
@@ -39,7 +38,6 @@ namespace AddressBook
         }
         public void EditContacts()
         {
-            CreateContacts();
             Console.WriteLine("to edit contact list enter contact firstname");
             string name = Console.ReadLine().ToLower();
             foreach (var data in GetContacts)
@@ -54,6 +52,7 @@ namespace AddressBook
                         switch (options)
                         {
                             case 1:string lastname = Console.ReadLine();
+                                data.LastName = lastname;
                                 break;
                             case 2:
                                 string address = Console.ReadLine();
@@ -89,11 +88,9 @@ namespace AddressBook
                     }
                 }
             }
-            DisplayContacts();
         }
         public void DeleteContacts()
         {
-            CreateContacts();
             Console.WriteLine("to delete contact list enter contact firstname ");
             string name = Console.ReadLine().ToLower();
             foreach (var data in GetContacts)
@@ -119,7 +116,6 @@ namespace AddressBook
                     }
                 }
             }
-            DisplayContacts();
         }
     }
 }

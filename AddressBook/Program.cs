@@ -32,10 +32,15 @@ namespace AddressBook
                         addressBook1.AddMultipleContacts(2);
                         break;
                     case 6:
-                        addressBook1.AddUniqueContacts(2);
+                        addressBook1.AddUniqueContacts();
                         break;
                     case 7:
                         addressBook1.DisplayUniqueContacts();
+                        break;
+                    case 8:
+                        Console.WriteLine("enter city to search multiple persons");
+                        string city = Console.ReadLine();
+                        addressBook1.SearchMultiplePersonNamesInCityOrState(city);
                         break;
                     default:
                         Console.WriteLine("Choose valid option");

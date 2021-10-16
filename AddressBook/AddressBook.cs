@@ -9,6 +9,7 @@ namespace AddressBook
     {
         public List<Contacts> GetContacts = new List<Contacts>();
         public Dictionary<string, List<Contacts>> dict = new Dictionary<string, List<Contacts>>();
+        public static Dictionary<string, List<Contacts>> City = new Dictionary<string, List<Contacts>>();
         public void CreateContacts()
         {
             Contacts contacts = new Contacts();
@@ -131,12 +132,10 @@ namespace AddressBook
                 n--;
             }
         }
-        public void AddUniqueContacts(int n)
+        public void AddUniqueContacts()
         {
             Console.WriteLine("enter firstname of your contactdetails");
             string name = Console.ReadLine().ToLower();
-            while (n > 0)
-            {
                 foreach (var data in GetContacts)
                 {
                     if (GetContacts.Contains(data))
@@ -155,29 +154,50 @@ namespace AddressBook
                         }
                     }  
                 }
-                n--;
-            }
             Console.WriteLine("Oops contactlist does not exist!! Please create a contactList");
             return;
         }
         public void DisplayUniqueContacts()
         {
             //maintain dictionary of addressbook name to addressbook
-            Console.WriteLine("enter name of dictionary to display that contact details");
-            string name = Console.ReadLine().ToLower();
-            foreach (var contacts in dict)
+            if (dict.Count >= 1)
             {
-                if (contacts.Key == name)
+                Console.WriteLine("enter name of dictionary to display that contact details");
+                string name = Console.ReadLine().ToLower();
+                foreach (var item in dict.Keys)
                 {
-                    foreach (var data in contacts.Value)
+                    Console.WriteLine($"Enter name to Select AddressBook : {item}");
+                }
+                foreach (var contacts in dict)
+                {
+                    if (contacts.Key == name)
                     {
-                        Console.WriteLine("The Contact of " + data.Firstname + " Details are\n:" + data.Firstname + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.Zip + " " + data.PhoneNumber + " " + data.Email);
-                        return;
+                        foreach (var data in contacts.Value)
+                        {
+                            Console.WriteLine("The Contact of " + data.Firstname + " Details are\n:" + data.Firstname + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.Zip + " " + data.PhoneNumber + " " + data.Email);
+                        }
+                    }
+                    return;
+                }
+                Console.WriteLine("Oops UniqueContacts does not exist!! Please create a UniquecontactList");
+                return;
+            }
+        }
+        //search Result can show multiple person name in the city or state
+        public void SearchMultiplePersonNamesInCityOrState(string city)
+        {
+            foreach (KeyValuePair<string, List<Contacts>> item in dict)
+            {
+                Console.WriteLine("Name of AddressBook: " + item.Key);
+                foreach (Contacts items in item.Value)
+                {
+                    if (items.City.Contains(city))
+                    {
+                        Console.WriteLine($"Name: {items.Firstname + " " + items.LastName}, Phone Number: {items.PhoneNumber}, City: {items.City}");
+                        Console.WriteLine();
                     }
                 }
             }
-            Console.WriteLine("Oops UniqueContacts does not exist!! Please create a UniquecontactList");
-            return;
         }
     }
 }

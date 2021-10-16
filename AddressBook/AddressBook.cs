@@ -8,7 +8,7 @@ namespace AddressBook
     class AddressBook
     {
         public List<Contacts> GetContacts = new List<Contacts>();
-        Dictionary<string, List<Contacts>> dict = new Dictionary<string, List<Contacts>>();
+        public Dictionary<string, List<Contacts>> dict = new Dictionary<string, List<Contacts>>();
         public void CreateContacts()
         {
             Contacts contacts = new Contacts();
@@ -37,7 +37,7 @@ namespace AddressBook
             {
                 if (GetContacts.Contains(data))
                 {
-                    Console.WriteLine("The Contact Details are\n:" + data.Firstname + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.Zip + " " + data.PhoneNumber + " " + data.Email);
+                    Console.WriteLine("The Contact Details of " + data.Firstname + " are\n:" + data.Firstname + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.Zip + " " + data.PhoneNumber + " " + data.Email);
                 }
                 else
                 {
@@ -91,50 +91,54 @@ namespace AddressBook
                                 Console.WriteLine("choose valid option");
                                 break;
                         }
-                    }
-                    else
-                    {
-                        Console.WriteLine("name does not exists");
+                        return;
                     }
                 }
             }
+            Console.WriteLine("name does not exists");
         }
         public void DeleteContacts()
         {
             Console.WriteLine("to delete contact list enter contact firstname ");
             string name = Console.ReadLine().ToLower();
-            foreach (var data in GetContacts.ToList())
+            try
             {
-                if (GetContacts.Contains(data))
+                foreach (var data in GetContacts)
                 {
-                    if (data.Firstname == name)
+                    if (GetContacts.Contains(data))
                     {
-                        try
+                        if (data.Firstname == name)
                         {
                             Console.WriteLine("given name contact exists");
                             GetContacts.Remove(data);
                             Console.WriteLine("contact deleted successfully");
+                            return;
                         }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine(e);
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("given name contact does not exists");
                     }
                 }
+                Console.WriteLine("given name contact does not exists");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
         }
         public void AddMultipleContacts(int n)
         {
             while (n > 0)
             {
+                CreateContacts();
+                n--;
+            }
+        }
+        public void AddUniqueContacts(int n)
+        {
+            Console.WriteLine("enter firstname of your contactdetails");
+            string name = Console.ReadLine().ToLower();
+            while (n > 0)
+            {
                 foreach (var data in GetContacts)
                 {
-                    Console.WriteLine("enter firstname of your contactdetails");
-                    string name = Console.ReadLine().ToLower();
                     if (GetContacts.Contains(data))
                     {
                         if (data.Firstname == name)
@@ -142,35 +146,32 @@ namespace AddressBook
                             Console.WriteLine("enter unique name to store the above contact details in a dictionary");
                             string uniqueName = Console.ReadLine().ToLower();
                             dict.Add(uniqueName, GetContacts);
+                            return;
                         }
-                        else
-                        {
-                            Console.WriteLine("Oops!! Please enter correct firstname of your contactList");
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("Oops contactlist does not exist!! Please create a contactList");
-                    }
+                    }  
                 }
                 n--;
             }
+            Console.WriteLine("Oops contactlist does not exist!! Please create a contactList");
+            return;
         }
-        public void DisplayMultContacts()
+        public void DisplayUniqueContacts()
         {
             //maintain dictionary of addressbook name to addressbook
             Console.WriteLine("enter name of dictionary to display that contact details");
             string name = Console.ReadLine().ToLower();
             foreach (var contacts in dict)
             {
-                if (contacts.Key.Contains(name))
+                if (contacts.Key == name)
                 {
                     foreach (var data in contacts.Value)
                     {
-                        Console.WriteLine("The Contact Details are\n:" + data.Firstname + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.Zip + " " + data.PhoneNumber + " " + data.Email);
+                        Console.WriteLine("The Contact of " + data.Firstname + " Details are\n:" + data.Firstname + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.Zip + " " + data.PhoneNumber + " " + data.Email);
                     }
                 }
             }
+            Console.WriteLine("Oops UniqueContacts does not exist!! Please create a UniquecontactList");
+            return;
         }
     }
 }

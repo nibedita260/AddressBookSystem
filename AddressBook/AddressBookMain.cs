@@ -34,7 +34,7 @@ namespace AddressBook
         {
             foreach (var data in getContacts)
             {
-                Console.WriteLine("The Contact Details are\n:" + data.Firstname + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.Zip + " " + data.PhoneNumber + " " + data.Email);
+                Console.WriteLine("The Contact Details of " + data.Firstname + " are\n:" + data.Firstname + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.Zip + " " + data.PhoneNumber + " " + data.Email);
             }
         }
         public void EditContacts()
@@ -84,40 +84,35 @@ namespace AddressBook
                                 Console.WriteLine("choose valid option");
                                 break;
                         }
-                    }
-                    else
-                    {
-                        Console.WriteLine("name does not exists");
+                        return;
                     }
                 }
             }
+            Console.WriteLine("name does not exists");
         }
         public void DeleteContacts()
         {
             Console.WriteLine("to delete contact list enter contact firstname ");
             string name = Console.ReadLine().ToLower();
-            foreach (var data in getContacts)
-            {
-                if (getContacts.Contains(data))
+            try {
+                foreach (var data in getContacts)
                 {
-                    if (data.Firstname == name)
+                    if (getContacts.Contains(data))
                     {
-                        try
+                        if (data.Firstname == name)
                         {
-                            Console.WriteLine("given name contact exists");
-                            getContacts.Remove(data);
-                            Console.WriteLine("contact deleted successfully");
+                                Console.WriteLine("given name contact exists");
+                                getContacts.Remove(data);
+                                Console.WriteLine("contact deleted successfully");
+                            return;
                         }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine(e);
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("given name contact does not exists");
                     }
                 }
+                Console.WriteLine("given name contact does not exists");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
         }
         public void AddMultipleContacts(int n)

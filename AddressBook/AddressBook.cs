@@ -145,6 +145,11 @@ namespace AddressBook
                         {
                             Console.WriteLine("enter unique name to store the above contact details in a dictionary");
                             string uniqueName = Console.ReadLine().ToLower();
+                            if (dict.ContainsKey(uniqueName))
+                            {
+                                Console.WriteLine("Oops!! Person name already Exists");
+                                return;
+                            }
                             dict.Add(uniqueName, GetContacts);
                             return;
                         }
@@ -167,6 +172,7 @@ namespace AddressBook
                     foreach (var data in contacts.Value)
                     {
                         Console.WriteLine("The Contact of " + data.Firstname + " Details are\n:" + data.Firstname + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.Zip + " " + data.PhoneNumber + " " + data.Email);
+                        return;
                     }
                 }
             }

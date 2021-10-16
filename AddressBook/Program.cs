@@ -12,7 +12,7 @@ namespace AddressBook
             AddressBook addressBook1 = new AddressBook();
             while (!isExit)
             {
-                Console.WriteLine("Choose 1.CreateContacts 2.DisplayContacts 3.EditContacts 4.DeleteContacts 5.AddMultipleContacts 6.UniqueContacts");
+                Console.WriteLine("Choose 1.CreateContacts 2.DisplayContacts 3.EditContacts 4.DeleteContacts 5.AddMultipleContacts 6.AddUniqueContacts 7.DisplayUniqueContacts");
                 options = Convert.ToInt32(Console.ReadLine());
                 switch (options)
                 {
@@ -32,7 +32,10 @@ namespace AddressBook
                         addressBook1.AddMultipleContacts(2);
                         break;
                     case 6:
-                        addressBook1.DisplayMultContacts();
+                        addressBook1.AddUniqueContacts(2);
+                        break;
+                    case 7:
+                        addressBook1.DisplayUniqueContacts();
                         break;
                     default:
                         Console.WriteLine("Choose valid option");

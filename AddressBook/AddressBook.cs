@@ -244,6 +244,23 @@ namespace AddressBook
                 }
             }
         }
-
+        public void CountContactsByCities(string city)
+        {
+            int count = 0;
+            foreach (KeyValuePair<string, List<Contacts>> item in dict)
+            {
+                Console.WriteLine("Name of AddressBook: " + item.Key);
+                foreach (Contacts items in item.Value)
+                {
+                    if (items.City.Contains(city))
+                    {
+                        count++;
+                        Console.WriteLine($"Name: {items.Firstname + " " + items.LastName}, Phone Number: {items.PhoneNumber}, City: {items.City}");
+                        Console.WriteLine();
+                    }
+                }
+            }
+            Console.WriteLine("count of Contacts using City-"+ city +" is: " + count);
+        }
     }
 }

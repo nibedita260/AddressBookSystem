@@ -12,7 +12,7 @@ namespace AddressBook
             AddressBook addressBook1 = new AddressBook();
             while (!isExit)
             {
-                Console.WriteLine("Choose 1.CreateContacts 2.DisplayContacts 3.EditContacts 4.DeleteContacts 5.AddMultipleContacts 6.AddUniqueContacts 7.DisplayUniqueContacts 8.SearchMultiplePersonNamesInCityOrState");
+                Console.WriteLine("Choose 1.CreateContacts 2.DisplayContacts 3.EditContacts 4.DeleteContacts 5.AddMultipleContacts 6.AddUniqueContacts 7.DisplayUniqueContacts 8.SearchMultiplePersonNamesInCityOrState 9.DisplayContactsByCities");
                 options = Convert.ToInt32(Console.ReadLine());
                 switch (options)
                 {
@@ -41,6 +41,10 @@ namespace AddressBook
                         Console.WriteLine("enter city to search multiple persons");
                         string city = Console.ReadLine();
                         addressBook1.SearchMultiplePersonNamesInCityOrState(city);
+                        break;
+                    case 9:
+                        addressBook1.UtilityToAddContactToCityState();
+                        addressBook1.DisplayContactsByCities();
                         break;
                     default:
                         Console.WriteLine("Choose valid option");

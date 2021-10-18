@@ -9,7 +9,8 @@ namespace AddressBook
     {
         public List<Contacts> GetContacts = new List<Contacts>();
         public Dictionary<string, List<Contacts>> dict = new Dictionary<string, List<Contacts>>();
-        public static Dictionary<string, List<Contacts>> City = new Dictionary<string, List<Contacts>>();
+        public Dictionary<string, List<Contacts>> dtCities = new Dictionary<string, List<Contacts>>();
+        public Dictionary<string, List<Contacts>> dtStates = new Dictionary<string, List<Contacts>>();
         public void CreateContacts()
         {
             Contacts contacts = new Contacts();
@@ -136,24 +137,24 @@ namespace AddressBook
         {
             Console.WriteLine("enter firstname of your contactdetails");
             string name = Console.ReadLine().ToLower();
-                foreach (var data in GetContacts)
+            foreach (var data in GetContacts)
+            {
+                if (GetContacts.Contains(data))
                 {
-                    if (GetContacts.Contains(data))
+                    if (data.Firstname == name)
                     {
-                        if (data.Firstname == name)
+                        Console.WriteLine("enter unique name to store the above contact details in a dictionary");
+                        string uniqueName = Console.ReadLine().ToLower();
+                        if (dict.ContainsKey(uniqueName))
                         {
-                            Console.WriteLine("enter unique name to store the above contact details in a dictionary");
-                            string uniqueName = Console.ReadLine().ToLower();
-                            if (dict.ContainsKey(uniqueName))
-                            {
-                                Console.WriteLine("Oops!! Person name already Exists");
-                                return;
-                            }
-                            dict.Add(uniqueName, GetContacts);
+                            Console.WriteLine("Oops!! Person name already Exists");
                             return;
                         }
-                    }  
+                        dict.Add(uniqueName, GetContacts);
+                        return;
+                    }
                 }
+            }
             Console.WriteLine("Oops contactlist does not exist!! Please create a contactList");
             return;
         }
@@ -170,7 +171,7 @@ namespace AddressBook
                 }
                 foreach (var contacts in dict)
                 {
-                    if (contacts.Key == name)
+                    if (contacts.Key.Contains(name))
                     {
                         foreach (var data in contacts.Value)
                         {
@@ -199,5 +200,50 @@ namespace AddressBook
                 }
             }
         }
+        //an utility to add contacts to city and state dictionary
+        public void UtilityToAddContactToCityState()
+        {
+            List<Contacts> stateList = new List<Contacts>();
+            // adding list to cities dictionary
+            try
+            {
+                var data = GetContacts.GroupBy(x => x.City);
+                foreach (var cities in data)
+                {
+                    List<Contacts> cityList = new List<Contacts>();
+                    foreach(var city in cities)
+                    {
+                        cityList.Add(city);
+                    }
+                    dtCities.Add(cities.Key, cityList);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+        /// <summary>
+        /// view Contacts by Cities
+        /// </summary>
+        public void DisplayContactsByCities()
+        {
+            if (dtCities.Count == 0)
+                Console.WriteLine("No AddressBook(s) to Show.");
+            if (dtCities.Count >= 1)
+            {
+                foreach (KeyValuePair<string, List<Contacts>> addressBooks in dtCities)
+                {
+                    Console.WriteLine("Contacts From City: " + addressBooks.Key);
+                    foreach (Contacts items in addressBooks.Value)
+                    {
+                        Console.WriteLine($"Name: {items.Firstname + " " + items.LastName}, Phone Number: {items.PhoneNumber}, City: {items.City}, State: {items.State}" +
+                            $"\n Address: {items.Address}, Zipcode: {items.Zip}, Email: {items.Email}");
+                        Console.WriteLine();
+                    }
+                }
+            }
+        }
+
     }
 }

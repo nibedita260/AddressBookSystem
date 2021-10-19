@@ -1,5 +1,7 @@
-﻿using System;
+﻿using CsvHelper;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -9,6 +11,7 @@ namespace AddressBook
     class AddressBook
     {
         static string Path = @"D:\git\AddressBookSystem\AddressBook\Contacts.txt";
+        static string CsvFilePath = @"D:\git\AddressBookSystem\AddressBook\Contacts.csv";
         public List<Contacts> GetContacts = new List<Contacts>();
         public Dictionary<string, List<Contacts>> dict = new Dictionary<string, List<Contacts>>();
         public Dictionary<string, List<Contacts>> dtCities = new Dictionary<string, List<Contacts>>();
@@ -326,6 +329,14 @@ namespace AddressBook
             foreach (var contacts in GetContacts)
             {
                 tw.WriteLine(contacts.Firstname.ToString() + " " + contacts.LastName.ToString() + " " + contacts.Address.ToString() + " " + contacts.City.ToString() + " " + contacts.State.ToString() + " " + contacts.PhoneNumber.ToString() + " " + contacts.Zip.ToString() + " " + contacts.Email.ToString());
+            }
+        }
+        public void SaveContactsToCSV()
+        {
+            using TextWriter tw = new StreamWriter(CsvFilePath);
+            using (var csvExport = new CsvWriter(tw, CultureInfo.InvariantCulture))
+            {
+                csvExport.WriteRecords(GetContacts);
             }
         }
     }

@@ -12,7 +12,11 @@ namespace AddressBook
             AddressBook addressBook1 = new AddressBook();
             while (!isExit)
             {
+<<<<<<< HEAD
                 Console.WriteLine("Choose 1.CreateContacts 2.DisplayContacts 3.EditContacts 4.DeleteContacts 5.AddMultipleContacts 6.AddUniqueContacts 7.DisplayUniqueContacts 8.SearchMultiplePersonNamesInCityOrState 9.DisplayContactsByCities 10.CountContactsByCities 11.SortContactsByName 12.SortContactsByCityStateZip 13.ReadOrWriteContactsToTxtFile");
+=======
+                Console.WriteLine("Choose 1.CreateContacts 2.DisplayContacts 3.EditContacts 4.DeleteContacts 5.AddMultipleContacts 6.AddUniqueContacts 7.DisplayUniqueContacts 8.SearchMultiplePersonNamesInCityOrState 9.DisplayContactsByCities 10.CountContactsByCities 11.SortContactsByName 12.SortContactsByCityStateZip 13.ReadOrWriteContactsIntoTxtFile 14.ReadOrWriteContactsIntoCSVFile");
+>>>>>>> UC14-ReadOrWriteContactsIntoCSVFile
                 options = Convert.ToInt32(Console.ReadLine());
                 switch (options)
                 {
@@ -61,6 +65,9 @@ namespace AddressBook
                         break;
                     case 13:
                         addressBook1.SaveContactsToTxt();
+                        break;
+                    case 14:
+                        addressBook1.SaveContactsToCSV();
                         break;
                     default:
                         Console.WriteLine("Choose valid option");

@@ -59,6 +59,9 @@ namespace AddressBook
                         addressBook1.SortContactsByState();
                         addressBook1.SortContactsByZip();
                         break;
+                    case 13:
+                        addressBook1.SaveContactsToTxt();
+                        break;
                     default:
                         Console.WriteLine("Choose valid option");
                         break;

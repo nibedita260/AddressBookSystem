@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -7,6 +8,7 @@ namespace AddressBook
 {
     class AddressBook
     {
+        static string Path = @"D:\git\AddressBookSystem\AddressBook\Contacts.txt";
         public List<Contacts> GetContacts = new List<Contacts>();
         public Dictionary<string, List<Contacts>> dict = new Dictionary<string, List<Contacts>>();
         public Dictionary<string, List<Contacts>> dtCities = new Dictionary<string, List<Contacts>>();
@@ -316,6 +318,14 @@ namespace AddressBook
                 {
                     Console.WriteLine("contact does not exists");
                 }
+            }
+        }
+        public void SaveContactsToTxt()
+        {
+            using TextWriter tw = new StreamWriter(Path);
+            foreach (var contacts in GetContacts)
+            {
+                tw.WriteLine(contacts.Firstname.ToString() + " " + contacts.LastName.ToString() + " " + contacts.Address.ToString() + " " + contacts.City.ToString() + " " + contacts.State.ToString() + " " + contacts.PhoneNumber.ToString() + " " + contacts.Zip.ToString() + " " + contacts.Email.ToString());
             }
         }
     }

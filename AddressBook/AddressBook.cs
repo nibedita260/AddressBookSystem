@@ -276,5 +276,47 @@ namespace AddressBook
                 }
             }
         }
+        public void SortContactsByCity()
+        {
+            foreach (var data in GetContacts.OrderBy(x => x.City).ToList())
+            {
+                if (GetContacts.Contains(data))
+                {
+                    Console.WriteLine("The Contact Details of " + data.Firstname + " are\n:" + data.Firstname + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.Zip + " " + data.PhoneNumber + " " + data.Email);
+                }
+                else
+                {
+                    Console.WriteLine("contact does not exists");
+                }
+            }
+        }
+        public void SortContactsByState()
+        {
+            foreach (var data in GetContacts.OrderBy(x => x.State).ToList())
+            {
+                if (GetContacts.Contains(data))
+                {
+                    Console.WriteLine("The Contact Details of " + data.Firstname + " are\n:" + data.Firstname + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.Zip + " " + data.PhoneNumber + " " + data.Email);
+                }
+                else
+                {
+                    Console.WriteLine("contact does not exists");
+                }
+            }
+        }
+        public void SortContactsByZip()
+        {
+            foreach (var data in GetContacts.OrderBy(x => x.Zip).ToList())
+            {
+                if (GetContacts.Contains(data))
+                {
+                    Console.WriteLine("The Contact Details of " + data.Firstname + " are\n:" + data.Firstname + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.Zip + " " + data.PhoneNumber + " " + data.Email);
+                }
+                else
+                {
+                    Console.WriteLine("contact does not exists");
+                }
+            }
+        }
     }
 }

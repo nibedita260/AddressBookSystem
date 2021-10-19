@@ -262,5 +262,19 @@ namespace AddressBook
             }
             Console.WriteLine("count of Contacts using City-"+ city +" is: " + count);
         }
+        public void SortContactsByName()
+        {
+            foreach (var data in GetContacts.OrderBy(x => x.Firstname).ToList())
+            {
+                if (GetContacts.Contains(data))
+                {
+                    Console.WriteLine("The Contact Details of " + data.Firstname + " are\n:" + data.Firstname + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.Zip + " " + data.PhoneNumber + " " + data.Email);
+                }
+                else
+                {
+                    Console.WriteLine("contact does not exists");
+                }
+            }
+        }
     }
 }

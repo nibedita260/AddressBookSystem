@@ -1,4 +1,5 @@
 ﻿using CsvHelper;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -12,6 +13,7 @@ namespace AddressBook
     {
         static string Path = @"D:\git\AddressBookSystem\AddressBook\Contacts.txt";
         static string CsvFilePath = @"D:\git\AddressBookSystem\AddressBook\Contacts.csv";
+        static string JsonFIlePath = @"D:\git\AddressBookSystem\AddressBook\Contacts.json";
         public List<Contacts> GetContacts = new List<Contacts>();
         public Dictionary<string, List<Contacts>> dict = new Dictionary<string, List<Contacts>>();
         public Dictionary<string, List<Contacts>> dtCities = new Dictionary<string, List<Contacts>>();
@@ -216,7 +218,7 @@ namespace AddressBook
                 foreach (var cities in data)
                 {
                     List<Contacts> cityList = new List<Contacts>();
-                    foreach(var city in cities)
+                    foreach (var city in cities)
                     {
                         cityList.Add(city);
                     }
@@ -265,7 +267,7 @@ namespace AddressBook
                     }
                 }
             }
-            Console.WriteLine("count of Contacts using City-"+ city +" is: " + count);
+            Console.WriteLine("count of Contacts using City-" + city + " is: " + count);
         }
         public void SortContactsByName()
         {
@@ -325,7 +327,7 @@ namespace AddressBook
         }
         public void SaveContactsToTxt()
         {
-            using TextWriter tw = new StreamWriter(Path);
+            TextWriter tw = new StreamWriter(Path);
             foreach (var contacts in GetContacts)
             {
                 tw.WriteLine(contacts.Firstname.ToString() + " " + contacts.LastName.ToString() + " " + contacts.Address.ToString() + " " + contacts.City.ToString() + " " + contacts.State.ToString() + " " + contacts.PhoneNumber.ToString() + " " + contacts.Zip.ToString() + " " + contacts.Email.ToString());
@@ -333,11 +335,22 @@ namespace AddressBook
         }
         public void SaveContactsToCSV()
         {
-            using TextWriter tw = new StreamWriter(CsvFilePath);
-            using (var csvExport = new CsvWriter(tw, CultureInfo.InvariantCulture))
+            StreamWriter sw = new StreamWriter(CsvFilePath);
+            using (var csvExport = new CsvWriter(sw, CultureInfo.InvariantCulture))
             {
                 csvExport.WriteRecords(GetContacts);
             }
+        }
+        public void SaveContactsToJson()
+        {
+            JsonSerializer jsonSerializer = new JsonSerializer();
+            StreamWriter sw = new StreamWriter(JsonFIlePath);
+            using (JsonWriter jsonWriter = new JsonTextWriter(sw))
+            {
+                jsonSerializer.Serialize(jsonWriter, GetContacts);
+            }
+
+
         }
     }
 }
